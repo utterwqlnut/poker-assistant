@@ -246,7 +246,7 @@ std::vector<Card> Hands::check_straight_help(std::vector<Card> cards) {
     if(curr_straight.size()>=5) {
         std::vector<Card> slice(curr_straight.end()-5,curr_straight.end());
         return slice;
-    } else if(highest_straight.size()>5){
+    } else if(highest_straight.size()>=5){
         std::vector<Card> slice(highest_straight.end()-5,highest_straight.end());
         return slice;
     } else {
@@ -265,6 +265,7 @@ std::vector<Card> Hands::check_straight(std::vector<Card> cards) {
                 cards[i].label = "A0";
             }
         }
+        std::sort(cards.begin(),cards.end());
         result = check_straight_help(cards);
         return result;
     }
